@@ -4,14 +4,31 @@ declare(strict_types=1);
 namespace Perf2k2\Remmoit\Checkers;
 
 use Perf2k2\Remmoit\CheckerInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\LogLevel;
 
 class DiskUsageChecker implements CheckerInterface
 {
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
     private $checks = [];
 
-    public function ifPercentUsageMoreThan(string $path, int $percent): self
+    public function __construct(LoggerInterface $logger)
     {
-        $this->checks[] = ['ifPercentUsageMoreThan', $path, $percent];
+        $this->setLogger($logger);
+    }
+
+    public function setLogger(LoggerInterface $logger): self
+    {
+        $this->logger = $logger;
+        return $this;
+    }
+
+    public function ifPercentUsageMoreThan(string $path, int $percent, string $logLevel = LogLevel::NOTICE): self
+    {
+        $this->checks[] = ['ifPercentUsageMoreThan', $path, $percent, $logLevel];
         return $this;
     }
 
@@ -42,7 +59,7 @@ class DiskUsageChecker implements CheckerInterface
                         $calculatedUsedPercent = round((int) $used / (int) $size * 100, 2);
 
                         if ($calculatedUsedPercent > $check[2]) {
-                            echo "Ends space in '{$path}': {$calculatedUsedPercent}% occupied!\n";
+                            $this->logger->log($check[3], "Ends space in '{$path}': {$calculatedUsedPercent}% occupied!");
                         }
                     }
                 }

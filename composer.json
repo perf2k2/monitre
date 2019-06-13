@@ -8,7 +8,9 @@
             "email": "perf2k2@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "psr/log": "1.*"
+    },
     "autoload": {
         "psr-4": {
             "Perf2k2\\Remmoit\\": "src/"
