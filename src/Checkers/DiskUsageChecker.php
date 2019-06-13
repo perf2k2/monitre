@@ -6,7 +6,7 @@ namespace Perf2k2\Remmoit\Checkers;
 use Perf2k2\Remmoit\AbstractChecker;
 use Perf2k2\Remmoit\Connection;
 
-class DiskChecker extends AbstractChecker
+class DiskUsageChecker extends AbstractChecker
 {
     private $data = [];
 
