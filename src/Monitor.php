@@ -9,6 +9,9 @@ class Monitor
      * @var Server[]
      */
     private $servers = [];
+    /**
+     * @var CheckerInterface[]
+     */
     private $checkers = [];
 
     public function addChecks(Server $server, array $checkers): self
@@ -28,6 +31,11 @@ class Monitor
         foreach ($this->servers as $server) {
             $connection = ssh2_connect($server->getAddress(), $server->getPort());
             $server->getAuthenticator()->auth($connection);
+
+            foreach ($this->checkers[$server->getAddress()] as $checker) {
+                /** @var $checker CheckerInterface */
+                $checker->runAll($connection);
+            }
         }
     }
 }
