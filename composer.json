@@ -1,0 +1,17 @@
+{
+    "name": "perf2k2/remmoit",
+    "type": "library",
+    "description": "",
+    "authors": [
+        {
+            "name": "perf2k2",
+            "email": "perf2k2@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Perf2k2\\Remmoit\\": "src/"
+        }
+    }
+}
