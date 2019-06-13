@@ -26,7 +26,7 @@ class DiskChecker extends AbstractChecker
         }
     }
 
-    public function getDiskUsagePercent(string $path): float
+    public function getUsagePercent(string $path): float
     {
         [, $size, $used] = $this->data[$path];
         return round((int) $used / (int) $size * 100, 2);
