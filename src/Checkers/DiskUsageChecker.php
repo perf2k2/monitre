@@ -26,9 +26,15 @@ class DiskUsageChecker implements CheckerInterface
         return $this;
     }
 
-    public function ifPercentUsageMoreThan(string $path, int $percent, string $logLevel = LogLevel::NOTICE): self
+    public function ifPercentUsageMoreThan(string $path, float $percent, string $logLevel = LogLevel::NOTICE): self
     {
         $this->checks[] = ['ifPercentUsageMoreThan', $path, $percent, $logLevel];
+        return $this;
+    }
+
+    public function ifPercentUsageBetween(string $path, float $min, float $max, string $logLevel = LogLevel::NOTICE): self
+    {
+        $this->checks[] = ['ifPercentUsageBetween', $path, $min, $max, $logLevel];
         return $this;
     }
 
@@ -59,7 +65,25 @@ class DiskUsageChecker implements CheckerInterface
                         $calculatedUsedPercent = round((int) $used / (int) $size * 100, 2);
 
                         if ($calculatedUsedPercent > $check[2]) {
-                            $this->logger->log($check[3], "Ends space in '{$path}': {$calculatedUsedPercent}% occupied!");
+                            $this->logger->log($check[3], "Occupied space on '{$path}': {$calculatedUsedPercent}%", [
+                                'path' => $path,
+                                'occupied' => $calculatedUsedPercent,
+                            ]);
+                        }
+                    }
+                }
+            }
+
+            if ($name === 'ifPercentUsageBetween') {
+                foreach ($data as $path => [$fs, $size, $used, $avail, $usePercent, $path]) {
+                    if ($path === $check[1]) {
+                        $calculatedUsedPercent = round((int) $used / (int) $size * 100, 2);
+
+                        if ($calculatedUsedPercent >= $check[2] && $calculatedUsedPercent < $check[3]) {
+                            $this->logger->log($check[4], "Occupied space on '{$path}': {$calculatedUsedPercent}%", [
+                                'path' => $path,
+                                'occupied' => $calculatedUsedPercent,
+                            ]);
                         }
                     }
                 }
