@@ -3,15 +3,17 @@ declare(strict_types=1);
 
 namespace Perf2k2\Remmoit\Checkers;
 
-use Perf2k2\Remmoit\CheckerInterface;
+use Perf2k2\Remmoit\AbstractChecker;
 use Perf2k2\Remmoit\Connection;
 
-class DiskChecker implements CheckerInterface
+class DiskChecker extends AbstractChecker
 {
     private $data = [];
 
     public function __construct(Connection $connection)
     {
+        parent::__construct($connection);
+
         $result = $connection->exec('df');
         foreach (explode("\n", $result) as $i => $line) {
             if ($i === 0 || empty($line)) {
