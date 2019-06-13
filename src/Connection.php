@@ -17,4 +17,13 @@ class Connection
     {
         return $this->resource;
     }
+
+    public function exec(string $command): string
+    {
+        $stream = ssh2_exec($this->getResource(), $command);
+        stream_set_blocking($stream, true);
+        $stream_out = ssh2_fetch_stream($stream, SSH2_STREAM_STDIO);
+
+        return stream_get_contents($stream_out);
+    }
 }
