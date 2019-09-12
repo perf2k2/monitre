@@ -10,3 +10,6 @@ gen
 
 # Composer
 vendor
+
+# Project
+.env
