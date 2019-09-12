@@ -1,13 +1,18 @@
 {
     "name": "perf2k2/remmoit",
     "type": "library",
-    "description": "",
+    "description": "Remote monitoring by ssh",
     "authors": [
         {
-            "name": "perf2k2",
+            "name": "Perf2k2",
             "email": "perf2k2@gmail.com"
         }
     ],
+    "config": {
+        "platform": {
+            "php": "7.2.0"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Perf2k2\\Remmoit\\": "src/"
@@ -16,5 +21,9 @@
     "require-dev": {
         "phpunit/phpunit": "7.*",
         "vlucas/phpdotenv": "2.*"
-    }
+    },
+  "require": {
+    "php": ">=7.2",
+    "ext-ssh2": "*"
+  }
 }
