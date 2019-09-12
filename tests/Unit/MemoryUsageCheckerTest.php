@@ -1,6 +1,6 @@
 <?php /** @noinspection PhpParamsInspection */
 
-use Perf2k2\Remmoit\Checkers\MemoryUsageChecker;
+use Perf2k2\Remmoit\Monitors\MemoryUsageMonitor;
 use Perf2k2\Remmoit\Connection;
 use PHPUnit\Framework\TestCase;
 
@@ -14,7 +14,7 @@ class MemoryUsageCheckerTest extends TestCase
 Mem:       16329360     9242516      425096      160580     6661748     6382772
 Swap:       8290300         512     8289788
 ');
-        $checker = new MemoryUsageChecker($connection);
+        $checker = new MemoryUsageMonitor($connection);
 
         $this->assertSame(56.6, $checker->getUsagePercent());
     }

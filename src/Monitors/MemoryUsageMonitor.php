@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Perf2k2\Remmoit\Checkers;
+namespace Perf2k2\Remmoit\Monitors;
 
-use Perf2k2\Remmoit\AbstractChecker;
+use Perf2k2\Remmoit\AbstractMonitor;
 use Perf2k2\Remmoit\Connection;
 
-class MemoryUsageChecker extends AbstractChecker
+class MemoryUsageMonitor extends AbstractMonitor
 {
     private $data = [];
 

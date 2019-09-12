@@ -1,6 +1,6 @@
 <?php /** @noinspection PhpParamsInspection */
 
-use Perf2k2\Remmoit\Checkers\DiskUsageChecker;
+use Perf2k2\Remmoit\Monitors\DiskUsageMonitor;
 use Perf2k2\Remmoit\Connection;
 use PHPUnit\Framework\TestCase;
 
@@ -20,7 +20,7 @@ tmpfs            8164680         0   8164680   0% /sys/fs/cgroup
 /dev/sdb1      956762684 496419456 460343228  52% /media/hdd
 tmpfs            1632936         0   1632936   0% /run/user/118
 tmpfs            1632936        28   1632908   1% /run/user/1000');
-        $checker = new DiskUsageChecker($connection);
+        $checker = new DiskUsageMonitor($connection);
 
         $this->assertSame(81.14, $checker->getUsagePercent('/'));
     }
