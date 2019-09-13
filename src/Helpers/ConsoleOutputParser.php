@@ -16,6 +16,11 @@ class ConsoleOutputParser
         $this->lines = explode("\n", $content);
     }
 
+    public function getLines(): array
+    {
+        return $this->lines;
+    }
+
     public function getLine(int $index): string
     {
         if (!array_key_exists($index, $this->lines)) {
