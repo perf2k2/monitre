@@ -5,6 +5,7 @@ namespace Perf2k2\Remmoit\Monitors;
 
 use Perf2k2\Remmoit\AbstractMonitor;
 use Perf2k2\Remmoit\Connection;
+use Perf2k2\Remmoit\Exceptions\ValidationException;
 
 class DiskUsageMonitor extends AbstractMonitor
 {
@@ -28,6 +29,10 @@ class DiskUsageMonitor extends AbstractMonitor
 
     public function getUsagePercent(string $path): float
     {
+        if (empty($path)) {
+            throw new ValidationException('Mount path not specified');
+        }
+
         [, $size, $used] = $this->data[$path];
         return round((int) $used / (int) $size * 100, 2);
     }

@@ -5,6 +5,7 @@ namespace Perf2k2\Remmoit;
 
 use Perf2k2\Remmoit\Exceptions\ConnectionException;
 use Perf2k2\Remmoit\Exceptions\ExecutionException;
+use Perf2k2\Remmoit\Exceptions\ValidationException;
 
 class Connection
 {
@@ -12,6 +13,10 @@ class Connection
 
     public function __construct(string $address, AuthenticatorInterface $authenticator, int $port = 22)
     {
+        if (empty($address)) {
+            throw new ValidationException('Empty host address specified');
+        }
+
         try {
             if (!$this->resource = ssh2_connect($address, $port)) {
                 throw new ConnectionException("Unable to connect to {$address}:{$port}");
@@ -34,6 +39,10 @@ class Connection
 
     public function exec(string $command): string
     {
+        if (empty($command)) {
+            throw new ValidationException('Empty command body specified');
+        }
+
         $stream = ssh2_exec($this->getResource(), $command);
 
         if (!$stream) {

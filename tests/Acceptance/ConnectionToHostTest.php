@@ -7,6 +7,7 @@ use Dotenv\Dotenv;
 use Perf2k2\Remmoit\Authenticators\PasswordAuthenticator;
 use Perf2k2\Remmoit\Connection;
 use Perf2k2\Remmoit\Exceptions\ConnectionException;
+use Perf2k2\Remmoit\Exceptions\ValidationException;
 use PHPUnit\Framework\TestCase;
 
 class ConnectionToHostTest extends TestCase
@@ -28,9 +29,15 @@ class ConnectionToHostTest extends TestCase
             $this->expectExceptionMessage('Unknown address: wronghost');
             new Connection('wronghost', new PasswordAuthenticator('user', 'password'), 2020);
         } catch (ConnectionException $e) {
-            $this->expectException(ConnectionException::class);
-            $this->expectExceptionMessage('Unable to connect to 11.11.11.11 on port 22');
-            new Connection('11.11.11.11', new PasswordAuthenticator('user', 'password'));
+            try {
+                $this->expectException(ConnectionException::class);
+                $this->expectExceptionMessage('Unable to connect to 11.11.11.11 on port 22');
+                new Connection('11.11.11.11', new PasswordAuthenticator('user', 'password'));
+            } catch (ConnectionException $e) {
+                $this->expectException(ValidationException::class);
+                $this->expectExceptionMessage('Empty command body specified');
+                $connection->exec('');
+            }
         }
     }
 }
