@@ -6,6 +6,7 @@ namespace Perf2k2\Remmoit\Monitors;
 use Perf2k2\Remmoit\AbstractMonitor;
 use Perf2k2\Remmoit\Connection;
 use Perf2k2\Remmoit\Exceptions\ValidationException;
+use Perf2k2\Remmoit\Helpers\ConsoleOutputParser;
 
 class DiskUsageMonitor extends AbstractMonitor
 {
@@ -16,14 +17,12 @@ class DiskUsageMonitor extends AbstractMonitor
         parent::__construct($connection);
 
         $result = $connection->exec('df');
-        foreach (explode("\n", $result) as $i => $line) {
-            if ($i === 0 || empty($line)) {
-                continue;
-            }
+        $parser = new ConsoleOutputParser($result);
 
-            preg_match('/(\w+)\s+(\d+)\s+(\d+)\s+(\d+)\s+([\d%]+)\s+(.+)/', $line, $matches);
-            [, , , , , , $path] = $matches;
-            $this->data[$path] = array_slice($matches, 1);
+        foreach ($parser->getLinesIterator([0], true) as $line) {
+            $data = $parser->parseString($line, '/(\w+)\s+(\d+)\s+(\d+)\s+(\d+)\s+([\d%]+)\s+(.+)/');
+            $path = $data[6];
+            $this->data[$path] = array_slice($data, 1);
         }
     }
 
