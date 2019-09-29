@@ -1,7 +1,9 @@
 {
-    "name": "perf2k2/remmoit",
+    "name": "perf2k2/monitre",
     "type": "library",
-    "description": "Remote monitoring by ssh",
+    "description": "PHP library for remote linux monitoring/diagnostic with no installation needed",
+    "keywords": ["linux monitoring", "os monitoring", "remote monitoring", "remote diagnostic"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Perf2k2",
@@ -15,7 +17,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Perf2k2\\Remmoit\\": "src/"
+            "Perf2k2\\Monitre\\": "src/"
         }
     },
     "require-dev": {

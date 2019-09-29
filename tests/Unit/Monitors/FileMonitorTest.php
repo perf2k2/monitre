@@ -1,8 +1,8 @@
 <?php /** @noinspection PhpParamsInspection */
 
-use Perf2k2\Remmoit\Connection;
-use Perf2k2\Remmoit\Exceptions\ValidationException;
-use Perf2k2\Remmoit\Monitors\FileMonitor;
+use Perf2k2\Monitre\Connection;
+use Perf2k2\Monitre\Exceptions\ValidationException;
+use Perf2k2\Monitre\Monitors\FileMonitor;
 use PHPUnit\Framework\TestCase;
 
 class FileMonitorTest extends TestCase
@@ -39,6 +39,11 @@ Change: 2019-07-25 22:03:44.912235721 +0300
     public function testGetContent()
     {
         $this->assertSame(self::$fileContent, $this->monitor->getContent());
+    }
+
+    public function testGetSize()
+    {
+        $this->assertSame(13428, $this->monitor->getSize());
     }
 
     public function testGetModifyTime()

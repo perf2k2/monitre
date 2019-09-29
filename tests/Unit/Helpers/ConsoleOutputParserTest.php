@@ -1,7 +1,7 @@
 <?php
 
-use Perf2k2\Remmoit\Exceptions\ValidationException;
-use Perf2k2\Remmoit\Helpers\ConsoleOutputParser;
+use Perf2k2\Monitre\Exceptions\ValidationException;
+use Perf2k2\Monitre\Helpers\ConsoleOutputParser;
 use PHPUnit\Framework\TestCase;
 
 class ConsoleOutputParserTest extends TestCase

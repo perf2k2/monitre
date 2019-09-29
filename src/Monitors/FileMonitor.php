@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Perf2k2\Remmoit\Monitors;
+namespace Perf2k2\Monitre\Monitors;
 
-use Perf2k2\Remmoit\AbstractMonitor;
-use Perf2k2\Remmoit\Connection;
-use Perf2k2\Remmoit\Exceptions\ValidationException;
-use Perf2k2\Remmoit\Helpers\ConsoleOutputParser;
+use Perf2k2\Monitre\AbstractMonitor;
+use Perf2k2\Monitre\Connection;
+use Perf2k2\Monitre\Exceptions\ValidationException;
+use Perf2k2\Monitre\Helpers\ConsoleOutputParser;
 
 class FileMonitor extends AbstractMonitor
 {
@@ -22,12 +22,22 @@ class FileMonitor extends AbstractMonitor
         $this->path;
     }
 
+    public function getSize(): int
+    {
+        $result = $this->connection->exec("stat {$this->path}");
+
+        $parser = new ConsoleOutputParser($result);
+        $string = $parser->parseLine(1, '/Size: (\d+)/')[1];
+
+        return (int) $string;
+    }
+
     public function getModifyTime(): \DateTimeImmutable
     {
         $result = $this->connection->exec("stat {$this->path}");
 
         $parser = new ConsoleOutputParser($result);
-        $string = $parser->parseLine(5, '/Modify: ([\w-\s:]+)/')[1];
+        $string = $parser->parseLine(5, '/Modify: ([\w\-\s:]+)/')[1];
 
         return new \DateTimeImmutable($string);
     }

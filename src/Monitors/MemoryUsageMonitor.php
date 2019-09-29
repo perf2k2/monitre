@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Perf2k2\Remmoit\Monitors;
+namespace Perf2k2\Monitre\Monitors;
 
-use Perf2k2\Remmoit\AbstractMonitor;
-use Perf2k2\Remmoit\Connection;
-use Perf2k2\Remmoit\Helpers\ConsoleOutputParser;
+use Perf2k2\Monitre\AbstractMonitor;
+use Perf2k2\Monitre\Connection;
+use Perf2k2\Monitre\Helpers\ConsoleOutputParser;
 
 class MemoryUsageMonitor extends AbstractMonitor
 {

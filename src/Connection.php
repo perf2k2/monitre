@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Perf2k2\Remmoit;
+namespace Perf2k2\Monitre;
 
-use Perf2k2\Remmoit\Exceptions\ConnectionException;
-use Perf2k2\Remmoit\Exceptions\ExecutionException;
-use Perf2k2\Remmoit\Exceptions\ValidationException;
+use Perf2k2\Monitre\Exceptions\ConnectionException;
+use Perf2k2\Monitre\Exceptions\ExecutionException;
+use Perf2k2\Monitre\Exceptions\ValidationException;
 
 class Connection
 {

@@ -1,8 +1,8 @@
 <?php /** @noinspection PhpParamsInspection */
 
-use Perf2k2\Remmoit\Exceptions\ValidationException;
-use Perf2k2\Remmoit\Monitors\DiskUsageMonitor;
-use Perf2k2\Remmoit\Connection;
+use Perf2k2\Monitre\Exceptions\ValidationException;
+use Perf2k2\Monitre\Monitors\DiskUsageMonitor;
+use Perf2k2\Monitre\Connection;
 use PHPUnit\Framework\TestCase;
 
 class DiskUsageCheckerTest extends TestCase

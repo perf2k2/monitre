@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Perf2k2\Remmoit\Tests\Acceptance;
+namespace Perf2k2\Monitre\Tests\Acceptance;
 
 use Dotenv\Dotenv;
-use Perf2k2\Remmoit\Authenticators\PasswordAuthenticator;
-use Perf2k2\Remmoit\Connection;
-use Perf2k2\Remmoit\Exceptions\AuthenticationException;
+use Perf2k2\Monitre\Authenticators\PasswordAuthenticator;
+use Perf2k2\Monitre\Connection;
+use Perf2k2\Monitre\Exceptions\AuthenticationException;
 use PHPUnit\Framework\TestCase;
 
 class AuthenticationTest extends TestCase

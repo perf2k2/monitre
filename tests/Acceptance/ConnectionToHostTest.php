@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Perf2k2\Remmoit\Tests\Acceptance;
+namespace Perf2k2\Monitre\Tests\Acceptance;
 
 use Dotenv\Dotenv;
-use Perf2k2\Remmoit\Authenticators\PasswordAuthenticator;
-use Perf2k2\Remmoit\Connection;
-use Perf2k2\Remmoit\Exceptions\ConnectionException;
-use Perf2k2\Remmoit\Exceptions\ValidationException;
+use Perf2k2\Monitre\Authenticators\PasswordAuthenticator;
+use Perf2k2\Monitre\Connection;
+use Perf2k2\Monitre\Exceptions\ConnectionException;
+use Perf2k2\Monitre\Exceptions\ValidationException;
 use PHPUnit\Framework\TestCase;
 
 class ConnectionToHostTest extends TestCase
