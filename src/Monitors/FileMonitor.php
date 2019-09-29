@@ -22,6 +22,16 @@ class FileMonitor extends AbstractMonitor
         $this->path;
     }
 
+    public function getSize(): int
+    {
+        $result = $this->connection->exec("stat {$this->path}");
+
+        $parser = new ConsoleOutputParser($result);
+        $string = $parser->parseLine(1, '/Size: (\d+)/')[1];
+
+        return (int) $string;
+    }
+
     public function getModifyTime(): \DateTimeImmutable
     {
         $result = $this->connection->exec("stat {$this->path}");
