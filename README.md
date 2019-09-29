@@ -1,4 +1,5 @@
 # Monitre
+[![Build Status](https://travis-ci.org/perf2k2/monitre.svg?branch=master)](https://travis-ci.org/perf2k2/monitre)
 
 ### About
 
