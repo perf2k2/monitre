@@ -1,7 +1,7 @@
 <?php /** @noinspection PhpParamsInspection */
 
-use Perf2k2\Remmoit\Monitors\MemoryUsageMonitor;
-use Perf2k2\Remmoit\Connection;
+use Perf2k2\Monitre\Monitors\MemoryUsageMonitor;
+use Perf2k2\Monitre\Connection;
 use PHPUnit\Framework\TestCase;
 
 class MemoryUsageCheckerTest extends TestCase

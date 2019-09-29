@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Perf2k2\Remmoit\Helpers;
+namespace Perf2k2\Monitre\Helpers;
 
-use Perf2k2\Remmoit\Exceptions\ValidationException;
+use Perf2k2\Monitre\Exceptions\ValidationException;
 
 class ConsoleOutputParser
 {

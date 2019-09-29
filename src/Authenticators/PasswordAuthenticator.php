@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Perf2k2\Remmoit\Authenticators;
+namespace Perf2k2\Monitre\Authenticators;
 
-use Perf2k2\Remmoit\AuthenticatorInterface;
-use Perf2k2\Remmoit\Exceptions\AuthenticationException;
-use Perf2k2\Remmoit\Exceptions\ValidationException;
+use Perf2k2\Monitre\AuthenticatorInterface;
+use Perf2k2\Monitre\Exceptions\AuthenticationException;
+use Perf2k2\Monitre\Exceptions\ValidationException;
 
 class PasswordAuthenticator implements AuthenticatorInterface
 {

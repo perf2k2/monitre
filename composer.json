@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Perf2k2\\Remmoit\\": "src/"
+            "Perf2k2\\Monitre\\": "src/"
         }
     },
     "require-dev": {

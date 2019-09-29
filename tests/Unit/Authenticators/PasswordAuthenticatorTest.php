@@ -1,8 +1,8 @@
 <?php
 
-use Perf2k2\Remmoit\Authenticators\PasswordAuthenticator;
-use Perf2k2\Remmoit\Exceptions\AuthenticationException;
-use Perf2k2\Remmoit\Exceptions\ValidationException;
+use Perf2k2\Monitre\Authenticators\PasswordAuthenticator;
+use Perf2k2\Monitre\Exceptions\AuthenticationException;
+use Perf2k2\Monitre\Exceptions\ValidationException;
 use PHPUnit\Framework\TestCase;
 
 class PasswordAuthenticatorTest extends TestCase
