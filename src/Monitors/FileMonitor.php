@@ -27,7 +27,7 @@ class FileMonitor extends AbstractMonitor
         $result = $this->connection->exec("stat {$this->path}");
 
         $parser = new ConsoleOutputParser($result);
-        $string = $parser->parseLine(5, '/Modify: ([\w-\s:]+)/')[1];
+        $string = $parser->parseLine(5, '/Modify: ([\w\-\s:]+)/')[1];
 
         return new \DateTimeImmutable($string);
     }
