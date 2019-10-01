@@ -21,11 +21,12 @@
         }
     },
     "require-dev": {
+        "ext-bcmath": "*",
         "phpunit/phpunit": "7.*",
         "vlucas/phpdotenv": "2.*"
     },
-  "require": {
-    "php": ">=7.2",
-    "ext-ssh2": "*"
-  }
+    "require": {
+        "php": ">=7.2",
+        "ext-ssh2": "*"
+    }
 }

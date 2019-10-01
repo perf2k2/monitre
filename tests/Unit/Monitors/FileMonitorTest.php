@@ -43,7 +43,7 @@ Change: 2019-07-25 22:03:44.912235721 +0300
 
     public function testGetSize()
     {
-        $this->assertSame(13428, $this->monitor->getSize());
+        $this->assertSame(13428.0, $this->monitor->getSize()->getBytes());
     }
 
     public function testGetModifyTime()

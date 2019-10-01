@@ -7,6 +7,7 @@ use Perf2k2\Monitre\AbstractMonitor;
 use Perf2k2\Monitre\Connection;
 use Perf2k2\Monitre\Exceptions\ValidationException;
 use Perf2k2\Monitre\Helpers\ConsoleOutputParser;
+use Perf2k2\Monitre\Helpers\Size;
 
 class FileMonitor extends AbstractMonitor
 {
@@ -22,14 +23,14 @@ class FileMonitor extends AbstractMonitor
         $this->path;
     }
 
-    public function getSize(): int
+    public function getSize(): Size
     {
         $result = $this->connection->exec("stat {$this->path}");
 
         $parser = new ConsoleOutputParser($result);
         $string = $parser->parseLine(1, '/Size: (\d+)/')[1];
 
-        return (int) $string;
+        return new Size((int) $string);
     }
 
     public function getModifyTime(): \DateTimeImmutable
