@@ -4,7 +4,7 @@ use Perf2k2\Monitre\Monitors\MemoryUsageMonitor;
 use Perf2k2\Monitre\Connection;
 use PHPUnit\Framework\TestCase;
 
-class MemoryUsageCheckerTest extends TestCase
+class MemoryUsageMonitorTest extends TestCase
 {
 
     public function testGetUsagePercent()
