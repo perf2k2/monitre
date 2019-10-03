@@ -20,7 +20,7 @@ class FileMonitor extends AbstractMonitor
         }
 
         parent::__construct($connection);
-        $this->path;
+        $this->path = $path;
     }
 
     public function getSize(): Size
