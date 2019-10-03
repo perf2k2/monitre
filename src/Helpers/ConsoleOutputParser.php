@@ -16,6 +16,11 @@ class ConsoleOutputParser
         $this->lines = explode("\n", $content);
     }
 
+    public function getContent(): string
+    {
+        return $this->content;
+    }
+
     public function getLines(): array
     {
         return $this->lines;

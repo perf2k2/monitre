@@ -43,18 +43,21 @@ class FileMonitor extends AbstractMonitor
         return new \DateTimeImmutable($string);
     }
 
-    public function getContent(): string
+    public function getBody(): ConsoleOutputParser
     {
-        return $this->connection->exec("cat {$this->path}");
+        $content = $this->connection->exec("cat {$this->path}");
+        return new ConsoleOutputParser($content);
     }
 
-    public function getLastLines(int $number = 10): string
+    public function getLastLines(int $number = 10): ConsoleOutputParser
     {
-        return $this->connection->exec("tail -n{$number} {$this->path}");
+        $content = $this->connection->exec("tail -n{$number} {$this->path}");
+        return new ConsoleOutputParser($content);
     }
 
-    public function getHeadLines(int $number = 10): string
+    public function getHeadLines(int $number = 10): ConsoleOutputParser
     {
-        return $this->connection->exec("head -n{$number} {$this->path}");
+        $content = $this->connection->exec("head -n{$number} {$this->path}");
+        return new ConsoleOutputParser($content);
     }
 }

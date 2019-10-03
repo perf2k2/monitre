@@ -38,12 +38,12 @@ Change: 2019-07-25 22:03:44.912235721 +0300
 
     public function testGetContent()
     {
-        $this->assertSame(self::$fileContent, $this->monitor->getContent());
+        $this->assertSame(self::$fileContent, $this->monitor->getBody()->getContent());
     }
 
     public function testGetSize()
     {
-        $this->assertSame(13428.0, $this->monitor->getSize()->getBytes());
+        $this->assertSame(13428.0, $this->monitor->getSize()->asBytes());
     }
 
     public function testGetModifyTime()

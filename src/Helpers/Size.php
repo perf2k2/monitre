@@ -18,27 +18,27 @@ class Size
         $this->bytes = $bytes;
     }
 
-    public function getBytes(int $precision = 0): float
+    public function asBytes(int $precision = 0): float
     {
         return \round($this->bytes, $precision);
     }
 
-    public function getKilobytes(int $precision = 0): float
+    public function asKilobytes(int $precision = 0): float
     {
         return \round($this->bytes / 1000, $precision);
     }
 
-    public function getMegabytes(int $precision = 0): float
+    public function asMegabytes(int $precision = 0): float
     {
         return \round($this->bytes / 1000 / 1000, $precision);
     }
 
-    public function getGigabytes(int $precision = 0): float
+    public function asGigabytes(int $precision = 0): float
     {
         return \round($this->bytes / 1000 / 1000 / 1000, $precision);
     }
 
-    public function getTerabytes(int $precision = 0): float
+    public function asTerabytes(int $precision = 0): float
     {
         return \round($this->bytes / 1000 / 1000 / 1000 / 1000, $precision);
     }

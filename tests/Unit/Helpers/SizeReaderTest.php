@@ -20,33 +20,33 @@ class SizeReaderTest extends TestCase
     }
 
 
-    public function testGb()
+    public function testAsGb()
     {
-        $this->assertSame(0.0, self::$instance->getGigabytes());
-        $this->assertSame(0.015, self::$instance->getGigabytes(3));
+        $this->assertSame(0.0, self::$instance->asGigabytes());
+        $this->assertSame(0.015, self::$instance->asGigabytes(3));
     }
 
-    public function testKb()
+    public function testAsKb()
     {
-        $this->assertSame(14734.0, self::$instance->getKilobytes());
-        $this->assertSame(14733.756, self::$instance->getKilobytes(3));
+        $this->assertSame(14734.0, self::$instance->asKilobytes());
+        $this->assertSame(14733.756, self::$instance->asKilobytes(3));
     }
 
-    public function testTb()
+    public function testAsTb()
     {
-        $this->assertSame(0.0, self::$instance->getTerabytes());
-        $this->assertSame(0, bccomp(0.000015, self::$instance->getTerabytes(3)));
+        $this->assertSame(0.0, self::$instance->asTerabytes());
+        $this->assertSame(0, bccomp(0.000015, self::$instance->asTerabytes(3)));
     }
 
-    public function testMb()
+    public function testAsMb()
     {
-        $this->assertSame(15.0, self::$instance->getMegabytes());
-        $this->assertSame(14.734, self::$instance->getMegabytes(3));
+        $this->assertSame(15.0, self::$instance->asMegabytes());
+        $this->assertSame(14.734, self::$instance->asMegabytes(3));
     }
 
-    public function testB()
+    public function testAsBytes()
     {
-        $this->assertSame(14733756.0, self::$instance->getBytes());
-        $this->assertSame(14733756.000, self::$instance->getBytes(3));
+        $this->assertSame(14733756.0, self::$instance->asBytes());
+        $this->assertSame(14733756.000, self::$instance->asBytes(3));
     }
 }

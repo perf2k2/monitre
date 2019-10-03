@@ -25,6 +25,16 @@ class PasswordAuthenticator implements AuthenticatorInterface
         $this->password = $password;
     }
 
+    public function getUser(): string
+    {
+        return $this->user;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
+    }
+
     public function auth($connection)
     {
         if (!is_resource($connection)) {
