@@ -6,6 +6,29 @@
 Library for connecting to remote linux systems and reading key performance and other metrics.
 Maybe useful for periodic checking remote machine state and logging situations with wrong values.
 
+### How it works
+
+It uses classes called "monitors" for checking metrics. After connecting to remote host by ssh, monitor 
+runs linux command and parse output for getting information. 
+
+### List of monitors
+
+* Memory
+    * Usage percent
+* Disk
+    * Usage percent (by mount path)
+* File (by absolute path)
+    * Size
+    * Modify time
+    * Content
+    * Last lines
+    * Header lines
+
+### Requirements
+
+* PHP >= 7.2
+* ext-ssh2
+
 ### Installation
 
 ```shell
@@ -29,7 +52,7 @@ if ($diskMonitor->getUsagePercent() > 90) {
 }
 
 $fileMonitor = new FileMonitor($server, '/path/to/file');
-if ($fileMonitor->getSize()/1024/1024 > 100) {
+if ($fileMonitor->getSize()->asMegabytes() > 100) {
     $logger->warning('File too large!');
 }
 ```
