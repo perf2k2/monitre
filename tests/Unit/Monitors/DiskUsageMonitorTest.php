@@ -5,7 +5,7 @@ use Perf2k2\Monitre\Monitors\DiskUsageMonitor;
 use Perf2k2\Monitre\Connection;
 use PHPUnit\Framework\TestCase;
 
-class DiskUsageCheckerTest extends TestCase
+class DiskUsageMonitorTest extends TestCase
 {
 
     public function testGetUsagePercent()

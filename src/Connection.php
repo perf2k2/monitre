@@ -9,6 +9,7 @@ use Perf2k2\Monitre\Exceptions\ValidationException;
 
 class Connection
 {
+    private $address;
     private $resource;
 
     public function __construct(string $address, AuthenticatorInterface $authenticator, int $port = 22)
@@ -16,6 +17,8 @@ class Connection
         if (empty($address)) {
             throw new ValidationException('Empty host address specified');
         }
+
+        $this->address = $address;
 
         try {
             if (!$this->resource = ssh2_connect($address, $port)) {
@@ -35,6 +38,11 @@ class Connection
     public function getResource()
     {
         return $this->resource;
+    }
+
+    public function getAddress(): string
+    {
+        return $this->address;
     }
 
     public function exec(string $command): string

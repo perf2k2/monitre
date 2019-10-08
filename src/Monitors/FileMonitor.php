@@ -7,6 +7,7 @@ use Perf2k2\Monitre\AbstractMonitor;
 use Perf2k2\Monitre\Connection;
 use Perf2k2\Monitre\Exceptions\ValidationException;
 use Perf2k2\Monitre\Helpers\ConsoleOutputParser;
+use Perf2k2\Monitre\Helpers\Size;
 
 class FileMonitor extends AbstractMonitor
 {
@@ -19,17 +20,17 @@ class FileMonitor extends AbstractMonitor
         }
 
         parent::__construct($connection);
-        $this->path;
+        $this->path = $path;
     }
 
-    public function getSize(): int
+    public function getSize(): Size
     {
         $result = $this->connection->exec("stat {$this->path}");
 
         $parser = new ConsoleOutputParser($result);
         $string = $parser->parseLine(1, '/Size: (\d+)/')[1];
 
-        return (int) $string;
+        return new Size((int) $string);
     }
 
     public function getModifyTime(): \DateTimeImmutable
@@ -42,18 +43,21 @@ class FileMonitor extends AbstractMonitor
         return new \DateTimeImmutable($string);
     }
 
-    public function getContent(): string
+    public function getBody(): ConsoleOutputParser
     {
-        return $this->connection->exec("cat {$this->path}");
+        $content = $this->connection->exec("cat {$this->path}");
+        return new ConsoleOutputParser($content);
     }
 
-    public function getLastLines(int $number = 10): string
+    public function getLastLines(int $number = 10): ConsoleOutputParser
     {
-        return $this->connection->exec("tail -n{$number} {$this->path}");
+        $content = $this->connection->exec("tail -n{$number} {$this->path}");
+        return new ConsoleOutputParser($content);
     }
 
-    public function getHeadLines(int $number = 10): string
+    public function getHeadLines(int $number = 10): ConsoleOutputParser
     {
-        return $this->connection->exec("head -n{$number} {$this->path}");
+        $content = $this->connection->exec("head -n{$number} {$this->path}");
+        return new ConsoleOutputParser($content);
     }
 }

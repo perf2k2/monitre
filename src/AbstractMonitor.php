@@ -11,4 +11,9 @@ abstract class AbstractMonitor
     {
         $this->connection = $connection;
     }
+
+    public function getConnection(): Connection
+    {
+        return $this->connection;
+    }
 }
