@@ -22,7 +22,7 @@
     },
     "require-dev": {
         "ext-bcmath": "*",
-        "phpunit/phpunit": "7.*",
+        "phpunit/phpunit": "7.* || 8.*",
         "vlucas/phpdotenv": "2.*"
     },
     "require": {
